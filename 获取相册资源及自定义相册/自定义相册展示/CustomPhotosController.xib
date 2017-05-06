@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomPhotosController">
+            <connections>
+                <outlet property="collectionView" destination="f39-jo-sGY" id="Cam-nX-TM7"/>
+                <outlet property="flowLayout" destination="3bk-KF-dCY" id="vus-Nf-1dM"/>
+                <outlet property="view" destination="iN0-l3-epB" id="icS-3K-qtv"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="f39-jo-sGY" customClass="CollectionView">
+                    <rect key="frame" x="0.0" y="110" width="375" height="557"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="3bk-KF-dCY">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="1" minY="1" maxX="1" maxY="1"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6xP-jn-sJC">
+                    <rect key="frame" x="8" y="72" width="114.5" height="30"/>
+                    <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="eI8-W9-Uan"/>
+                    </constraints>
+                    <state key="normal" title="照片"/>
+                    <connections>
+                        <action selector="getPhotoWithBut:" destination="-1" eventType="touchUpInside" id="AcM-U0-qkK"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="id2-wn-TY1">
+                    <rect key="frame" x="130.5" y="72" width="114" height="30"/>
+                    <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="视频"/>
+                    <connections>
+                        <action selector="getVideoWithBut:" destination="-1" eventType="touchUpInside" id="y4L-98-rrV"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O96-yu-8eJ">
+                    <rect key="frame" x="252.5" y="72" width="114.5" height="30"/>
+                    <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="照片和视频"/>
+                    <connections>
+                        <action selector="getAllAssets:" destination="-1" eventType="touchUpInside" id="EYI-W2-oop"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="O96-yu-8eJ" secondAttribute="trailing" constant="8" id="147-9r-WFM"/>
+                <constraint firstItem="O96-yu-8eJ" firstAttribute="width" secondItem="id2-wn-TY1" secondAttribute="width" id="3ab-LX-AEm"/>
+                <constraint firstItem="id2-wn-TY1" firstAttribute="width" secondItem="6xP-jn-sJC" secondAttribute="width" id="4TP-i0-980"/>
+                <constraint firstItem="O96-yu-8eJ" firstAttribute="centerY" secondItem="id2-wn-TY1" secondAttribute="centerY" id="H5f-Ic-b7e"/>
+                <constraint firstItem="id2-wn-TY1" firstAttribute="height" secondItem="6xP-jn-sJC" secondAttribute="height" id="IJH-i1-56Y"/>
+                <constraint firstItem="f39-jo-sGY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="IzL-vQ-Mya"/>
+                <constraint firstAttribute="bottom" secondItem="f39-jo-sGY" secondAttribute="bottom" id="Jed-Up-B5M"/>
+                <constraint firstAttribute="trailing" secondItem="f39-jo-sGY" secondAttribute="trailing" id="dAB-lT-PlM"/>
+                <constraint firstItem="f39-jo-sGY" firstAttribute="top" secondItem="O96-yu-8eJ" secondAttribute="bottom" constant="8" id="fVE-kM-vcf"/>
+                <constraint firstItem="id2-wn-TY1" firstAttribute="leading" secondItem="6xP-jn-sJC" secondAttribute="trailing" constant="8" id="j5M-fa-YVo"/>
+                <constraint firstItem="id2-wn-TY1" firstAttribute="centerY" secondItem="6xP-jn-sJC" secondAttribute="centerY" id="kCs-NA-8RF"/>
+                <constraint firstItem="O96-yu-8eJ" firstAttribute="leading" secondItem="id2-wn-TY1" secondAttribute="trailing" constant="8" id="pgG-VW-zBN"/>
+                <constraint firstItem="6xP-jn-sJC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="sQp-af-bPu"/>
+                <constraint firstItem="6xP-jn-sJC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="72" id="uSR-0g-4AG"/>
+                <constraint firstItem="O96-yu-8eJ" firstAttribute="height" secondItem="id2-wn-TY1" secondAttribute="height" id="ydo-Je-IWe"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <point key="canvasLocation" x="25.5" y="52.5"/>
+        </view>
+    </objects>
+</document>

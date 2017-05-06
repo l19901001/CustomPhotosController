@@ -15,6 +15,13 @@
 		01B0A6811EB8AE8400E3F039 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01B0A67F1EB8AE8400E3F039 /* LaunchScreen.storyboard */; };
 		01B0A68C1EB8AE8500E3F039 /* ____________Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B0A68B1EB8AE8500E3F039 /* ____________Tests.m */; };
 		01B0A6971EB8AE8500E3F039 /* ____________UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B0A6961EB8AE8500E3F039 /* ____________UITests.m */; };
+		01B0A6A81EB8AFF000E3F039 /* CustomPhotosController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B0A6A71EB8AFF000E3F039 /* CustomPhotosController.m */; };
+		01B0A6B01EB8B21500E3F039 /* CustomPhotosController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01B0A6AF1EB8B21500E3F039 /* CustomPhotosController.xib */; };
+		01B0A6B31EB8B86E00E3F039 /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B0A6B21EB8B86E00E3F039 /* CollectionViewCell.m */; };
+		01B0A6B51EB8B88A00E3F039 /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01B0A6B41EB8B88A00E3F039 /* CollectionViewCell.xib */; };
+		01B0A6B81EB8C27100E3F039 /* PhotoObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B0A6B71EB8C27100E3F039 /* PhotoObject.m */; };
+		01B0A6BC1EBA139B00E3F039 /* CollectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B0A6BB1EBA139B00E3F039 /* CollectionModel.m */; };
+		01B0A6C21EBB22CA00E3F039 /* CollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B0A6C11EBB22CA00E3F039 /* CollectionView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +58,18 @@
 		01B0A6921EB8AE8500E3F039 /* 获取相册资源及自定义相册UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "获取相册资源及自定义相册UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		01B0A6961EB8AE8500E3F039 /* ____________UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "____________UITests.m"; sourceTree = "<group>"; };
 		01B0A6981EB8AE8500E3F039 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		01B0A6A61EB8AFF000E3F039 /* CustomPhotosController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPhotosController.h; sourceTree = "<group>"; };
+		01B0A6A71EB8AFF000E3F039 /* CustomPhotosController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPhotosController.m; sourceTree = "<group>"; };
+		01B0A6AF1EB8B21500E3F039 /* CustomPhotosController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomPhotosController.xib; sourceTree = "<group>"; };
+		01B0A6B11EB8B86E00E3F039 /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
+		01B0A6B21EB8B86E00E3F039 /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
+		01B0A6B41EB8B88A00E3F039 /* CollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
+		01B0A6B61EB8C27100E3F039 /* PhotoObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoObject.h; sourceTree = "<group>"; };
+		01B0A6B71EB8C27100E3F039 /* PhotoObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoObject.m; sourceTree = "<group>"; };
+		01B0A6BA1EBA139B00E3F039 /* CollectionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionModel.h; sourceTree = "<group>"; };
+		01B0A6BB1EBA139B00E3F039 /* CollectionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionModel.m; sourceTree = "<group>"; };
+		01B0A6C01EBB22CA00E3F039 /* CollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionView.h; sourceTree = "<group>"; };
+		01B0A6C11EBB22CA00E3F039 /* CollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +120,8 @@
 		01B0A6701EB8AE8400E3F039 /* 获取相册资源及自定义相册 */ = {
 			isa = PBXGroup;
 			children = (
+				01B0A6A51EB8AF9200E3F039 /* 自定义相册展示 */,
+				01B0A6A41EB8AF7500E3F039 /* 获取系统相册资源 */,
 				01B0A6741EB8AE8400E3F039 /* AppDelegate.h */,
 				01B0A6751EB8AE8400E3F039 /* AppDelegate.m */,
 				01B0A6771EB8AE8400E3F039 /* ViewController.h */,
@@ -138,6 +159,32 @@
 				01B0A6981EB8AE8500E3F039 /* Info.plist */,
 			);
 			path = "获取相册资源及自定义相册UITests";
+			sourceTree = "<group>";
+		};
+		01B0A6A41EB8AF7500E3F039 /* 获取系统相册资源 */ = {
+			isa = PBXGroup;
+			children = (
+				01B0A6B61EB8C27100E3F039 /* PhotoObject.h */,
+				01B0A6B71EB8C27100E3F039 /* PhotoObject.m */,
+			);
+			path = "获取系统相册资源";
+			sourceTree = "<group>";
+		};
+		01B0A6A51EB8AF9200E3F039 /* 自定义相册展示 */ = {
+			isa = PBXGroup;
+			children = (
+				01B0A6A61EB8AFF000E3F039 /* CustomPhotosController.h */,
+				01B0A6A71EB8AFF000E3F039 /* CustomPhotosController.m */,
+				01B0A6AF1EB8B21500E3F039 /* CustomPhotosController.xib */,
+				01B0A6C01EBB22CA00E3F039 /* CollectionView.h */,
+				01B0A6C11EBB22CA00E3F039 /* CollectionView.m */,
+				01B0A6B11EB8B86E00E3F039 /* CollectionViewCell.h */,
+				01B0A6B21EB8B86E00E3F039 /* CollectionViewCell.m */,
+				01B0A6B41EB8B88A00E3F039 /* CollectionViewCell.xib */,
+				01B0A6BA1EBA139B00E3F039 /* CollectionModel.h */,
+				01B0A6BB1EBA139B00E3F039 /* CollectionModel.m */,
+			);
+			path = "自定义相册展示";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,6 +254,7 @@
 				TargetAttributes = {
 					01B0A66D1EB8AE8400E3F039 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = H9J7BEYSA2;
 						ProvisioningStyle = Automatic;
 					};
 					01B0A6861EB8AE8400E3F039 = {
@@ -249,6 +297,8 @@
 				01B0A6811EB8AE8400E3F039 /* LaunchScreen.storyboard in Resources */,
 				01B0A67E1EB8AE8400E3F039 /* Assets.xcassets in Resources */,
 				01B0A67C1EB8AE8400E3F039 /* Main.storyboard in Resources */,
+				01B0A6B01EB8B21500E3F039 /* CustomPhotosController.xib in Resources */,
+				01B0A6B51EB8B88A00E3F039 /* CollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,8 +324,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				01B0A6791EB8AE8400E3F039 /* ViewController.m in Sources */,
+				01B0A6B31EB8B86E00E3F039 /* CollectionViewCell.m in Sources */,
+				01B0A6C21EBB22CA00E3F039 /* CollectionView.m in Sources */,
 				01B0A6761EB8AE8400E3F039 /* AppDelegate.m in Sources */,
+				01B0A6B81EB8C27100E3F039 /* PhotoObject.m in Sources */,
 				01B0A6731EB8AE8400E3F039 /* main.m in Sources */,
+				01B0A6A81EB8AFF000E3F039 /* CustomPhotosController.m in Sources */,
+				01B0A6BC1EBA139B00E3F039 /* CollectionModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,9 +477,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = H9J7BEYSA2;
 				INFOPLIST_FILE = "获取相册资源及自定义相册/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "lsscom.com.------------";
+				PRODUCT_BUNDLE_IDENTIFIER = lsscom.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -433,9 +491,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = H9J7BEYSA2;
 				INFOPLIST_FILE = "获取相册资源及自定义相册/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "lsscom.com.------------";
+				PRODUCT_BUNDLE_IDENTIFIER = lsscom.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
