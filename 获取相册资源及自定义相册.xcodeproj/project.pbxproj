@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		015A7D8E1EC043920098CE5C /* NSObject+SSKVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 015A7D8D1EC043920098CE5C /* NSObject+SSKVO.m */; };
+		015A7D911EC043F00098CE5C /* UIScrollView+SSGES.m in Sources */ = {isa = PBXBuildFile; fileRef = 015A7D901EC043F00098CE5C /* UIScrollView+SSGES.m */; };
+		015A7D951EC1CBF50098CE5C /* BrowseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 015A7D941EC1CBF50098CE5C /* BrowseCollectionViewCell.m */; };
+		015A7D9A1EC1F04B0098CE5C /* BrowseCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 015A7D991EC1F04B0098CE5C /* BrowseCollectionView.m */; };
+		015A7D9C1EC1F3B10098CE5C /* BrowseCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 015A7D9B1EC1F3B10098CE5C /* BrowseCollectionView.xib */; };
+		015A7DA11EC460770098CE5C /* BrowseCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 015A7DA01EC460770098CE5C /* BrowseCollectionViewFlowLayout.m */; };
+		015A7DA41EC83D3B0098CE5C /* PhotosModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 015A7DA31EC83D3B0098CE5C /* PhotosModel.m */; };
+		015A7DE61ED01C9C0098CE5C /* SSNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 015A7DE51ED01C9C0098CE5C /* SSNetworking.m */; };
+		015A7DE91ED083320098CE5C /* SSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 015A7DE81ED083320098CE5C /* SSViewController.m */; };
+		015A7DEB1ED083DC0098CE5C /* SSViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 015A7DEA1ED083DC0098CE5C /* SSViewController.xib */; };
+		015A7DEE1ED085310098CE5C /* SSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 015A7DED1ED085310098CE5C /* SSTableViewCell.m */; };
+		015A7DF01ED085400098CE5C /* SSTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 015A7DEF1ED085400098CE5C /* SSTableViewCell.xib */; };
 		01B0A6731EB8AE8400E3F039 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B0A6721EB8AE8400E3F039 /* main.m */; };
 		01B0A6761EB8AE8400E3F039 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B0A6751EB8AE8400E3F039 /* AppDelegate.m */; };
 		01B0A6791EB8AE8400E3F039 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B0A6781EB8AE8400E3F039 /* ViewController.m */; };
@@ -42,6 +54,27 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		015A7D8C1EC043920098CE5C /* NSObject+SSKVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SSKVO.h"; sourceTree = "<group>"; };
+		015A7D8D1EC043920098CE5C /* NSObject+SSKVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SSKVO.m"; sourceTree = "<group>"; };
+		015A7D8F1EC043F00098CE5C /* UIScrollView+SSGES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SSGES.h"; sourceTree = "<group>"; };
+		015A7D901EC043F00098CE5C /* UIScrollView+SSGES.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SSGES.m"; sourceTree = "<group>"; };
+		015A7D931EC1CBF50098CE5C /* BrowseCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowseCollectionViewCell.h; sourceTree = "<group>"; };
+		015A7D941EC1CBF50098CE5C /* BrowseCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrowseCollectionViewCell.m; sourceTree = "<group>"; };
+		015A7D981EC1F04B0098CE5C /* BrowseCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowseCollectionView.h; sourceTree = "<group>"; };
+		015A7D991EC1F04B0098CE5C /* BrowseCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrowseCollectionView.m; sourceTree = "<group>"; };
+		015A7D9B1EC1F3B10098CE5C /* BrowseCollectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrowseCollectionView.xib; sourceTree = "<group>"; };
+		015A7D9F1EC460770098CE5C /* BrowseCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowseCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		015A7DA01EC460770098CE5C /* BrowseCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrowseCollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		015A7DA21EC83D3B0098CE5C /* PhotosModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotosModel.h; sourceTree = "<group>"; };
+		015A7DA31EC83D3B0098CE5C /* PhotosModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotosModel.m; sourceTree = "<group>"; };
+		015A7DE41ED01C9C0098CE5C /* SSNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSNetworking.h; path = ../SSNetworking.h; sourceTree = "<group>"; };
+		015A7DE51ED01C9C0098CE5C /* SSNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSNetworking.m; path = ../SSNetworking.m; sourceTree = "<group>"; };
+		015A7DE71ED083320098CE5C /* SSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSViewController.h; sourceTree = "<group>"; };
+		015A7DE81ED083320098CE5C /* SSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSViewController.m; sourceTree = "<group>"; };
+		015A7DEA1ED083DC0098CE5C /* SSViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SSViewController.xib; sourceTree = "<group>"; };
+		015A7DEC1ED085300098CE5C /* SSTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSTableViewCell.h; sourceTree = "<group>"; };
+		015A7DED1ED085310098CE5C /* SSTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSTableViewCell.m; sourceTree = "<group>"; };
+		015A7DEF1ED085400098CE5C /* SSTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SSTableViewCell.xib; sourceTree = "<group>"; };
 		01B0A66E1EB8AE8400E3F039 /* 获取相册资源及自定义相册.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "获取相册资源及自定义相册.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		01B0A6721EB8AE8400E3F039 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		01B0A6741EB8AE8400E3F039 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -97,6 +130,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		015A7D921EC1CB120098CE5C /* 图片浏览 */ = {
+			isa = PBXGroup;
+			children = (
+				015A7D981EC1F04B0098CE5C /* BrowseCollectionView.h */,
+				015A7D991EC1F04B0098CE5C /* BrowseCollectionView.m */,
+				015A7D9B1EC1F3B10098CE5C /* BrowseCollectionView.xib */,
+				015A7D931EC1CBF50098CE5C /* BrowseCollectionViewCell.h */,
+				015A7D941EC1CBF50098CE5C /* BrowseCollectionViewCell.m */,
+				015A7D9F1EC460770098CE5C /* BrowseCollectionViewFlowLayout.h */,
+				015A7DA01EC460770098CE5C /* BrowseCollectionViewFlowLayout.m */,
+			);
+			path = "图片浏览";
+			sourceTree = "<group>";
+		};
 		01B0A6651EB8AE8400E3F039 = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +167,7 @@
 		01B0A6701EB8AE8400E3F039 /* 获取相册资源及自定义相册 */ = {
 			isa = PBXGroup;
 			children = (
+				015A7D921EC1CB120098CE5C /* 图片浏览 */,
 				01B0A6A51EB8AF9200E3F039 /* 自定义相册展示 */,
 				01B0A6A41EB8AF7500E3F039 /* 获取系统相册资源 */,
 				01B0A6741EB8AE8400E3F039 /* AppDelegate.h */,
@@ -127,6 +175,12 @@
 				01B0A6771EB8AE8400E3F039 /* ViewController.h */,
 				01B0A6781EB8AE8400E3F039 /* ViewController.m */,
 				01B0A67A1EB8AE8400E3F039 /* Main.storyboard */,
+				015A7DE71ED083320098CE5C /* SSViewController.h */,
+				015A7DE81ED083320098CE5C /* SSViewController.m */,
+				015A7DEA1ED083DC0098CE5C /* SSViewController.xib */,
+				015A7DEC1ED085300098CE5C /* SSTableViewCell.h */,
+				015A7DED1ED085310098CE5C /* SSTableViewCell.m */,
+				015A7DEF1ED085400098CE5C /* SSTableViewCell.xib */,
 				01B0A67D1EB8AE8400E3F039 /* Assets.xcassets */,
 				01B0A67F1EB8AE8400E3F039 /* LaunchScreen.storyboard */,
 				01B0A6821EB8AE8400E3F039 /* Info.plist */,
@@ -164,8 +218,14 @@
 		01B0A6A41EB8AF7500E3F039 /* 获取系统相册资源 */ = {
 			isa = PBXGroup;
 			children = (
+				015A7DE41ED01C9C0098CE5C /* SSNetworking.h */,
+				015A7DE51ED01C9C0098CE5C /* SSNetworking.m */,
+				015A7D8C1EC043920098CE5C /* NSObject+SSKVO.h */,
+				015A7D8D1EC043920098CE5C /* NSObject+SSKVO.m */,
 				01B0A6B61EB8C27100E3F039 /* PhotoObject.h */,
 				01B0A6B71EB8C27100E3F039 /* PhotoObject.m */,
+				015A7DA21EC83D3B0098CE5C /* PhotosModel.h */,
+				015A7DA31EC83D3B0098CE5C /* PhotosModel.m */,
 			);
 			path = "获取系统相册资源";
 			sourceTree = "<group>";
@@ -183,6 +243,8 @@
 				01B0A6B41EB8B88A00E3F039 /* CollectionViewCell.xib */,
 				01B0A6BA1EBA139B00E3F039 /* CollectionModel.h */,
 				01B0A6BB1EBA139B00E3F039 /* CollectionModel.m */,
+				015A7D8F1EC043F00098CE5C /* UIScrollView+SSGES.h */,
+				015A7D901EC043F00098CE5C /* UIScrollView+SSGES.m */,
 			);
 			path = "自定义相册展示";
 			sourceTree = "<group>";
@@ -256,6 +318,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = H9J7BEYSA2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+						};
 					};
 					01B0A6861EB8AE8400E3F039 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -297,7 +364,10 @@
 				01B0A6811EB8AE8400E3F039 /* LaunchScreen.storyboard in Resources */,
 				01B0A67E1EB8AE8400E3F039 /* Assets.xcassets in Resources */,
 				01B0A67C1EB8AE8400E3F039 /* Main.storyboard in Resources */,
+				015A7DEB1ED083DC0098CE5C /* SSViewController.xib in Resources */,
 				01B0A6B01EB8B21500E3F039 /* CustomPhotosController.xib in Resources */,
+				015A7DF01ED085400098CE5C /* SSTableViewCell.xib in Resources */,
+				015A7D9C1EC1F3B10098CE5C /* BrowseCollectionView.xib in Resources */,
 				01B0A6B51EB8B88A00E3F039 /* CollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -323,14 +393,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				015A7DA11EC460770098CE5C /* BrowseCollectionViewFlowLayout.m in Sources */,
 				01B0A6791EB8AE8400E3F039 /* ViewController.m in Sources */,
+				015A7DE91ED083320098CE5C /* SSViewController.m in Sources */,
 				01B0A6B31EB8B86E00E3F039 /* CollectionViewCell.m in Sources */,
 				01B0A6C21EBB22CA00E3F039 /* CollectionView.m in Sources */,
 				01B0A6761EB8AE8400E3F039 /* AppDelegate.m in Sources */,
 				01B0A6B81EB8C27100E3F039 /* PhotoObject.m in Sources */,
+				015A7DA41EC83D3B0098CE5C /* PhotosModel.m in Sources */,
+				015A7D951EC1CBF50098CE5C /* BrowseCollectionViewCell.m in Sources */,
+				015A7DEE1ED085310098CE5C /* SSTableViewCell.m in Sources */,
+				015A7DE61ED01C9C0098CE5C /* SSNetworking.m in Sources */,
+				015A7D9A1EC1F04B0098CE5C /* BrowseCollectionView.m in Sources */,
+				015A7D8E1EC043920098CE5C /* NSObject+SSKVO.m in Sources */,
 				01B0A6731EB8AE8400E3F039 /* main.m in Sources */,
 				01B0A6A81EB8AFF000E3F039 /* CustomPhotosController.m in Sources */,
 				01B0A6BC1EBA139B00E3F039 /* CollectionModel.m in Sources */,
+				015A7D911EC043F00098CE5C /* UIScrollView+SSGES.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -566,6 +645,7 @@
 				01B0A69D1EB8AE8500E3F039 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		01B0A69E1EB8AE8500E3F039 /* Build configuration list for PBXNativeTarget "获取相册资源及自定义相册Tests" */ = {
 			isa = XCConfigurationList;
@@ -574,6 +654,7 @@
 				01B0A6A01EB8AE8500E3F039 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		01B0A6A11EB8AE8500E3F039 /* Build configuration list for PBXNativeTarget "获取相册资源及自定义相册UITests" */ = {
 			isa = XCConfigurationList;
@@ -582,6 +663,7 @@
 				01B0A6A31EB8AE8500E3F039 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

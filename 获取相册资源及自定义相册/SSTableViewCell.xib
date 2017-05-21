@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="62" id="7b9-cP-UqD" customClass="SSTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="62"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7b9-cP-UqD" id="tvX-ll-daz">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="61.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qpc-Is-ot1">
+                        <rect key="frame" x="13" y="6" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="gmc-GM-zk6"/>
+                            <constraint firstAttribute="height" constant="50" id="hAI-nj-g8X"/>
+                        </constraints>
+                    </imageView>
+                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jvd-us-DXs">
+                        <rect key="frame" x="73" y="30" width="139" height="2"/>
+                    </progressView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hwj-V1-u5A">
+                        <rect key="frame" x="230" y="16" width="31" height="30"/>
+                        <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <state key="normal" title="暂定"/>
+                        <connections>
+                            <action selector="butClickEvent:" destination="7b9-cP-UqD" eventType="touchUpInside" id="efN-6V-EWK"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z6d-0W-W0V">
+                        <rect key="frame" x="271" y="16" width="31" height="30"/>
+                        <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <state key="normal" title="上传"/>
+                        <connections>
+                            <action selector="butClickEvent:" destination="7b9-cP-UqD" eventType="touchUpInside" id="pGv-ol-0Qc"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="z6d-0W-W0V" firstAttribute="leading" secondItem="Hwj-V1-u5A" secondAttribute="trailing" constant="10" id="2ne-dr-tAR"/>
+                    <constraint firstItem="z6d-0W-W0V" firstAttribute="height" secondItem="Hwj-V1-u5A" secondAttribute="height" id="55G-Hq-a1H"/>
+                    <constraint firstItem="Hwj-V1-u5A" firstAttribute="centerY" secondItem="jvd-us-DXs" secondAttribute="centerY" id="5uX-ef-H2x"/>
+                    <constraint firstItem="z6d-0W-W0V" firstAttribute="centerY" secondItem="Hwj-V1-u5A" secondAttribute="centerY" id="KLE-5R-UKy"/>
+                    <constraint firstItem="jvd-us-DXs" firstAttribute="leading" secondItem="qpc-Is-ot1" secondAttribute="trailing" constant="10" id="RwQ-Z4-bNC"/>
+                    <constraint firstItem="qpc-Is-ot1" firstAttribute="leading" secondItem="tvX-ll-daz" secondAttribute="leadingMargin" constant="5" id="UCc-w9-ZcL"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="z6d-0W-W0V" secondAttribute="trailing" constant="10" id="a3X-ts-287"/>
+                    <constraint firstItem="jvd-us-DXs" firstAttribute="centerY" secondItem="tvX-ll-daz" secondAttribute="centerY" id="ad8-Pv-iJq"/>
+                    <constraint firstItem="qpc-Is-ot1" firstAttribute="top" secondItem="tvX-ll-daz" secondAttribute="top" constant="6" id="dsV-Vk-pYR"/>
+                    <constraint firstAttribute="bottom" secondItem="qpc-Is-ot1" secondAttribute="bottom" constant="5.5" id="kSs-cO-kWa"/>
+                    <constraint firstItem="z6d-0W-W0V" firstAttribute="width" secondItem="Hwj-V1-u5A" secondAttribute="width" id="ugx-Rn-Bmk"/>
+                    <constraint firstItem="Hwj-V1-u5A" firstAttribute="leading" secondItem="jvd-us-DXs" secondAttribute="trailing" constant="18" id="ujQ-5T-eXh"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="imageV" destination="qpc-Is-ot1" id="dFR-kz-PEw"/>
+                <outlet property="progressV" destination="jvd-us-DXs" id="tVE-TK-Kgq"/>
+                <outlet property="resume" destination="z6d-0W-W0V" id="cLw-bX-cGr"/>
+                <outlet property="suspened" destination="Hwj-V1-u5A" id="bJ5-pc-JWx"/>
+            </connections>
+            <point key="canvasLocation" x="-124" y="83"/>
+        </tableViewCell>
+    </objects>
+</document>

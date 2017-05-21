@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+@class PhotosModel;
+
+typedef void(^SelectFinishBlock)(NSArray <PhotosModel *>*array);
 
 @interface CustomPhotosController : UIViewController
+
+@property (nonatomic, copy) SelectFinishBlock selectFinishBlock;
 
 @end

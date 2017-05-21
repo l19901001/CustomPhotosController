@@ -7,10 +7,10 @@
 //
 
 #import "CollectionViewCell.h"
-#import "CollectionModel.h"
+#import "PhotosModel.h"
 
 @interface CollectionViewCell ()
-@property (nonatomic, strong) CollectionModel *model;
+@property (nonatomic, strong) PhotosModel *model;
 @property (weak, nonatomic) IBOutlet UIImageView *imageV;
 @property (weak, nonatomic) IBOutlet UIView *maskView;
 
@@ -24,6 +24,8 @@
     
     self.contentView.backgroundColor = [UIColor redColor];
     _imageV.backgroundColor = [UIColor yellowColor];
+    _imageV.clipsToBounds = YES;
+    _imageV.contentMode = UIViewContentModeScaleAspectFill;
     _maskView.hidden = YES;
     [CATransaction begin];
     [CATransaction setDisableActions:YES];
@@ -34,8 +36,8 @@
 
 -(void)confiImage:(NSObject *)objc
 {
-    _model = (CollectionModel *)objc;
-    _imageV.image = _model.images;
+    _model = (PhotosModel *)objc;
+    _imageV.image = _model.aspectRatioThumbnail;
 
     _maskView.hidden = !_model.select;
 }

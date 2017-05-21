@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="rNO-Qu-nFV" customClass="BrowseCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yUg-fr-fLr">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="X2f-1N-4ts">
+                                <rect key="frame" x="0.0" y="134" width="320" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="iZQ-yN-nol"/>
+                                    <constraint firstAttribute="width" constant="320" id="kJW-VK-Scy"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="X2f-1N-4ts" secondAttribute="bottom" constant="134" id="DW0-M5-fVs"/>
+                            <constraint firstAttribute="trailing" secondItem="X2f-1N-4ts" secondAttribute="trailing" id="GvN-xH-Hri"/>
+                            <constraint firstItem="X2f-1N-4ts" firstAttribute="leading" secondItem="yUg-fr-fLr" secondAttribute="leading" id="Sns-5Q-j87"/>
+                            <constraint firstItem="X2f-1N-4ts" firstAttribute="top" secondItem="yUg-fr-fLr" secondAttribute="top" constant="134" id="ijY-gh-0Nb"/>
+                        </constraints>
+                    </scrollView>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="yUg-fr-fLr" firstAttribute="top" secondItem="rNO-Qu-nFV" secondAttribute="top" id="JcA-sd-Glf"/>
+                <constraint firstAttribute="trailing" secondItem="yUg-fr-fLr" secondAttribute="trailing" id="Nhm-3l-OIY"/>
+                <constraint firstAttribute="bottom" secondItem="yUg-fr-fLr" secondAttribute="bottom" id="q86-O4-5e4"/>
+                <constraint firstItem="yUg-fr-fLr" firstAttribute="leading" secondItem="rNO-Qu-nFV" secondAttribute="leading" id="y8A-6p-NF9"/>
+            </constraints>
+            <size key="customSize" width="469" height="683"/>
+            <connections>
+                <outlet property="BottomConstr" destination="DW0-M5-fVs" id="Z49-ax-fbg"/>
+                <outlet property="imageV" destination="X2f-1N-4ts" id="uwK-SP-xRv"/>
+                <outlet property="imageVH" destination="iZQ-yN-nol" id="hqH-Jc-ocF"/>
+                <outlet property="imageVW" destination="kJW-VK-Scy" id="veG-LR-O5F"/>
+                <outlet property="scrollView" destination="yUg-fr-fLr" id="Bc5-aI-3NY"/>
+                <outlet property="topConstr" destination="ijY-gh-0Nb" id="0Ht-ZD-b7K"/>
+            </connections>
+            <point key="canvasLocation" x="-40" y="445"/>
+        </collectionViewCell>
+    </objects>
+</document>

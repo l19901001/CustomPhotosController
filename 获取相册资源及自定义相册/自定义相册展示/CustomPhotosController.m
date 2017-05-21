@@ -6,21 +6,18 @@
 //  Copyright © 2017年 lss. All rights reserved.
 //
 
-#import <objc/runtime.h>
 #import "CustomPhotosController.h"
 #import "CollectionViewCell.h"
-#import "PhotoObject.h"
-#import "CollectionModel.h"
 #import "CollectionView.h"
+#import "BrowseCollectionView.h"
 
-@interface CustomPhotosController ()<UIGestureRecognizerDelegate>
+
+@interface CustomPhotosController ()<UIGestureRecognizerDelegate, BrowseCollectionViewDelegate>
 
 @property (weak, nonatomic) IBOutlet CollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *flowLayout;
-@property (nonatomic, strong) NSMutableArray *rows;
-@property (nonatomic, assign) CGPoint sPoint;
-@property (nonatomic, strong) CollectionViewCell *selectCell;
-@property (nonatomic, strong) NSIndexPath *selectIndex;
+@property (nonatomic, strong) UIView *bottomView;
+@property (nonatomic, strong) BrowseCollectionView *browseCollectionView;
 
 @end
 
@@ -29,9 +26,81 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
-    _rows = [NSMutableArray array];
     _collectionView.allowsMultipleSelection = YES;
     self.navigationController.interactivePopGestureRecognizer.delegate = self;
+    [self setRightBarButtonItem];
+    
+    __weak typeof(self) wself = self;
+    _collectionView.clickCompletion = ^(NSArray *images, NSIndexPath *indexPath){
+        [wself picktrueBrowze:images index:indexPath];
+    };
+}
+
+-(void)picktrueBrowze:(NSArray *)images index:(NSIndexPath *)indexPath
+{
+    _browseCollectionView = [BrowseCollectionView loadXIB];
+    _browseCollectionView.ss_delegate = self;
+    NSMutableArray *rows = [NSMutableArray arrayWithArray:images];
+    _browseCollectionView.rows = rows.copy;
+    _browseCollectionView.showIndex = indexPath;
+    UICollectionViewCell *cell = [_collectionView cellForItemAtIndexPath:indexPath];
+    UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
+    CGRect windRect = [_collectionView convertRect:cell.frame toView:keyWindow];
+    _browseCollectionView.oriRect = windRect;
+    
+    [_browseCollectionView showBrowseView];
+}
+
+-(void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    CGFloat wh = (_collectionView.bounds.size.width-10)/4;
+    _flowLayout.itemSize = CGSizeMake(wh, wh);
+    _flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    UINib *nib = [UINib nibWithNibName:@"CollectionViewCell" bundle:[NSBundle mainBundle]];
+    [_collectionView registerNib:nib forCellWithReuseIdentifier:@"CELLID"];
+}
+
+-(void)setRightBarButtonItem
+{
+    UIButton *but = [UIButton buttonWithType:UIButtonTypeCustom];
+    [but setTitle:@"选择" forState:UIControlStateNormal];
+    [but setTitle:@"取消" forState:UIControlStateSelected];
+    [but setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    [but addTarget:self action:@selector(clickEvent:) forControlEvents:UIControlEventTouchUpInside];
+    [but sizeToFit];
+    
+    UIButton *butOK = [UIButton buttonWithType:UIButtonTypeCustom];
+    [butOK setTitle:@"完成" forState:UIControlStateNormal];
+    [butOK setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    [butOK addTarget:self action:@selector(clickOKEvent:) forControlEvents:UIControlEventTouchUpInside];
+    [butOK sizeToFit];
+    
+    UIBarButtonItem *butItem = [[UIBarButtonItem alloc] initWithCustomView:but];
+    UIBarButtonItem *butItemOK = [[UIBarButtonItem alloc] initWithCustomView:butOK];
+    self.navigationItem.rightBarButtonItems = @[butItem, butItemOK];
+}
+
+-(void)clickEvent:(id)sender
+{
+    UIButton *but = (UIButton *)sender;
+    but.selected = !but.isSelected;
+    [_collectionView registEvent:but.selected];
+}
+
+-(void)clickOKEvent:(id)sender
+{
+    if (_selectFinishBlock && _collectionView.selectData.count > 0) {
+        _selectFinishBlock(_collectionView.selectData);
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 -(BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
@@ -39,70 +108,56 @@
     return NO;
 }
 
--(void)viewDidLayoutSubviews
+-(void)browseDidScroll:(BrowseCollectionView *)browseView indexPath:(NSIndexPath *)indexPath
 {
-    [super viewDidLayoutSubviews];
-    
-    CGFloat wh = (_collectionView.bounds.size.width-5)/4;
-    _flowLayout.itemSize = CGSizeMake(wh, wh);
-    _flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
-    UINib *nib = [UINib nibWithNibName:@"CollectionViewCell" bundle:[NSBundle mainBundle]];
-    [_collectionView registerNib:nib forCellWithReuseIdentifier:@"CELLID"];
+    CollectionViewCell *cell = (CollectionViewCell *)[_collectionView cellForItemAtIndexPath:indexPath];
+
+    [_collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
+    if(![_collectionView.visibleCells containsObject:cell]){
+        if(cell == nil){
+            [_collectionView reloadItemsAtIndexPaths:@[indexPath]];
+            cell = (CollectionViewCell *)[_collectionView cellForItemAtIndexPath:indexPath];
+        }
+    }
+    UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
+    CGRect windRect = [_collectionView convertRect:cell.frame toView:keyWindow];
+    _browseCollectionView.oriRect = windRect;
 }
 
 - (IBAction)getPhotoWithBut:(id)sender
 {
-    PhotoObject *photoObj = [[PhotoObject alloc] initWithAssetsType:AssetsTypePhotos completion:^(NSArray<UIImage *> *array) {
-        [_rows removeAllObjects];
-        [array enumerateObjectsUsingBlock:^(UIImage * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            CollectionModel *model = [[CollectionModel alloc] init];
-            model.images = obj;
-            model.select = NO;
-            [_rows addObject:model];
-        }];
-        _collectionView.rows = _rows;
-    }];
-    [photoObj getAessets];
+    [_collectionView getAssetsWithType:AssetsTypePhotos];
 }
 - (IBAction)getVideoWithBut:(id)sender
 {
-    PhotoObject *photoObj = [[PhotoObject alloc] initWithAssetsType:AssetsTypeVideo completion:^(NSArray<UIImage *> *array) {
-        [_rows removeAllObjects];
-        [array enumerateObjectsUsingBlock:^(UIImage * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            CollectionModel *model = [[CollectionModel alloc] init];
-            model.images = obj;
-            model.select = NO;
-            [_rows addObject:model];
-        }];
-        _collectionView.rows = _rows;
-    }];
-    
-    [photoObj getAessets];
+    [_collectionView getAssetsWithType:AssetsTypeVideo];
 }
 - (IBAction)getAllAssets:(id)sender
 {
-    PhotoObject *photoObj = [[PhotoObject alloc] initWithAssetsType:AssetsTypeAll completion:^(NSArray<UIImage *> *array) {
-        [_rows removeAllObjects];
-        [array enumerateObjectsUsingBlock:^(UIImage * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            CollectionModel *model = [[CollectionModel alloc] init];
-            model.images = obj;
-            model.select = NO;
-            [_rows addObject:model];
-        }];
-        _collectionView.rows = _rows;
-    }];
-    [photoObj getAessets];
-//    [photoObj getAessetsWithCurrenIndex:2 toIndex:3];
+    [_collectionView getAssetsWithType:AssetsTypeAll];
+}
+
+-(UIView *)bottomView
+{
+    if(_bottomView == nil){
+        _bottomView = [[UIView alloc] init];
+        
+        UIButton *but = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_bottomView addSubview:but];
+    }
+    
+    return _bottomView;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    
 }
 
 -(void)dealloc
 {
     NSLog(@"%s", __FUNCTION__);
+    _browseCollectionView = nil;
+    
 }
 
 

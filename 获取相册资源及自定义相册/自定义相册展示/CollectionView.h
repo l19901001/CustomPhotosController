@@ -7,9 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PhotoObject.h"
+
+typedef void(^ClickCompletion)(NSArray *images, NSIndexPath *indexPath);
+typedef void(^SelectCompletion)(NSArray *images);
 
 @interface CollectionView : UICollectionView
 
-@property (nonatomic, strong) NSMutableArray *rows;
+@property (nonatomic, strong, readonly) NSMutableArray *selectData;
+@property (nonatomic, copy) ClickCompletion clickCompletion;
+@property (nonatomic, copy) SelectCompletion selectCompletion;
+
+-(void)registEvent:(BOOL)eventType;
+
+-(void)getAssetsWithType:(AssetsType)type;
 
 @end
+

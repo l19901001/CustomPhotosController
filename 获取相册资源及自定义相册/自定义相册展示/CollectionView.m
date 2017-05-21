@@ -7,28 +7,26 @@
 //
 
 #import "CollectionView.h"
-#import <objc/runtime.h>
 #import "CollectionViewCell.h"
 #import "CollectionModel.h"
+#import "NSObject+SSKVO.h"
+#import "UIScrollView+SSGES.h"
 
 @interface CollectionView () <UICollectionViewDelegate, UICollectionViewDataSource, UIGestureRecognizerDelegate>
 
+@property (nonatomic, strong) NSMutableArray *rows;
 @property (nonatomic, strong) UIGestureRecognizer *gestureRecognizer;
 @property (nonatomic, assign) CGPoint sPoint;
 @property (nonatomic, strong) CollectionViewCell *selectCell;
 @property (nonatomic, strong) NSIndexPath *selectIndex;
-
+@property (nonatomic, strong) UIPanGestureRecognizer *cusPan;
+@property (nonatomic, assign) BOOL addGes;
+@property (nonatomic, strong) PhotoObject *photoObj;
+@property (nonatomic, strong) NSMutableArray *modelDatas;
 
 @end
 
 @implementation CollectionView
-
-//+(void)load
-//{
-//    Method oriMethod = class_getInstanceMethod([self class], @selector(handlePan:));
-//    Method exchangMethod = class_getInstanceMethod([self class], @selector(cusHandlePan:));
-//    method_exchangeImplementations(oriMethod, exchangMethod);
-//}
 
 -(void)awakeFromNib
 {
@@ -36,33 +34,55 @@
     
     self.delegate = self;
     self.dataSource = self;
-    UIPanGestureRecognizer *pan = self.panGestureRecognizer;
-    pan.delaysTouchesEnded = NO;
-    _gestureRecognizer = pan;
+    self.panGestureRecognizer.delaysTouchesEnded = NO;
+    _rows = [NSMutableArray array];
+    [self.panGestureRecognizer addObserver:self forKeyPath:@"state" options:NSKeyValueObservingOptionNew context:"self_panges"];
+    _photoObj = [[PhotoObject alloc] initWithAssetsType:AssetsTypePhotos completion:^(NSArray<PhotosModel *> *array) {
+        [_rows removeAllObjects];
+        [_rows addObjectsFromArray:array];
+        [self reloadData];
+    }];
+    
+    [_photoObj getAessets];
 }
 
-//-(void)cusHandlePan:(UIGestureRecognizer*)gestureRecognizer
-//{
-//    [self cusHandlePan:gestureRecognizer];
-//    if ([gestureRecognizer isKindOfClass:NSClassFromString(@"UIScrollViewPanGestureRecognizer")]) {
-//        _gestureRecognizer = gestureRecognizer;
-//    }
-//}
-
--(void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+-(void)registEvent:(BOOL)eventType
 {
-    _gestureRecognizer.enabled = NO;
-    UITouch *tch = touches.anyObject;
-    CGPoint point = [tch previousLocationInView:self];
-    if(_sPoint.x == 0){
-        _sPoint = point;
+    _addGes = eventType;
+    if(eventType){
+        UIPanGestureRecognizer *cusPan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(cusHandlGes:)];
+        cusPan.delegate = self;
+        _cusPan = cusPan;
+        [_cusPan requireGestureRecognizerToFail:self.panGestureRecognizer];
+        [self addGestureRecognizer:cusPan];
+        
+        [cusPan addObserver:self forKeyPath:@"state" options:NSKeyValueObservingOptionNew context:"cuspan"];
+    }else{
+        [self.modelDatas removeAllObjects];
+        [self removeGestureRecognizer:_cusPan];
+        [_cusPan removeObserver:self forKeyPath:@"state"];
+        for (CollectionModel *model in _rows) {
+            if(model.select){
+                model.select = NO;
+            }
+        }
+        [self reloadData];
     }
+}
 
+-(void)getAssetsWithType:(AssetsType)type
+{
+    _photoObj.assetsType = type;
+    [_photoObj getAessets];
+}
+
+-(void)cusHandlGes:(UIGestureRecognizer *)ges
+{
+    CGPoint point = [ges locationInView:self];
     for (CollectionViewCell *cell in self.visibleCells) {
         if(CGRectContainsPoint(cell.frame, point)){
-            
+
             if(cell == _selectCell){
-                NSLog(@"结束循环");
                 break;
             }
             else{
@@ -70,33 +90,37 @@
                 _selectIndex = indexPath;
                 CollectionModel *model = _rows[indexPath.item];
                 model.select = !model.isSelect;
-                [self reloadData];
-            }
-        }
-    }
-}
-
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
-    UITouch *tch = touches.anyObject;
-    CGPoint point = [tch locationInView:self];
-    if(!self.tracking){
-        for (CollectionViewCell *cell in self.visibleCells) {
-            if (CGRectContainsPoint(cell.frame, point)) {
-                NSIndexPath *indexPath = [self indexPathForCell:cell];
-                if([self respondsToSelector:@selector(collectionView:didSelectItemAtIndexPath:)]){
-                     [self collectionView:self didSelectItemAtIndexPath:indexPath];
+                [self reloadItemsAtIndexPaths:@[indexPath]];
+                if(model.select){
+                    if(![self.modelDatas containsObject:model]){
+                        [self.modelDatas addObject:model];
+                    }
+                }else{
+                    if([self.modelDatas containsObject:model]){
+                        [self.modelDatas removeObject:model];
+                    }
                 }
-               
-                break;
+                
             }
         }
     }
 }
 
--(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+-(void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    _gestureRecognizer.enabled = YES;
+    if(_addGes && self.panGestureRecognizer.enabled){
+        UITouch *tch = touches.anyObject;
+        CGPoint point = [tch locationInView:self];
+        if(_sPoint.x == 0){
+            _sPoint = point;
+        }
+        CGFloat offsetX = fabs(point.x-_sPoint.x);
+        if(offsetX > 10){
+            self.panGestureRecognizer.enabled = NO;
+            _cusPan.enabled = YES;
+            _sPoint = CGPointZero;
+        }
+    }
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -122,10 +146,44 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    [collectionView deselectItemAtIndexPath:indexPath animated:NO];
-    CollectionModel *model = _rows[indexPath.item];
-    model.select = !model.isSelect;
-    [self reloadItemsAtIndexPaths:@[indexPath]];
+    [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+    if(_addGes){
+        [collectionView deselectItemAtIndexPath:indexPath animated:NO];
+        CollectionModel *model = _rows[indexPath.item];
+        model.select = !model.isSelect;
+        [self reloadItemsAtIndexPaths:@[indexPath]];
+        if(model.select){
+            if(![self.modelDatas containsObject:model]){
+                 [self.modelDatas addObject:model];
+            }
+        }else{
+            if([self.modelDatas containsObject:model]){
+                [self.modelDatas removeObject:model];
+            }
+        }
+    }else{
+        if(self.clickCompletion){
+            self.clickCompletion(_rows.copy, indexPath);
+        }
+    }
+}
+
+-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+{
+    NSString *classString = NSStringFromClass([gestureRecognizer class]);
+    if([classString isEqualToString:@"UIScrollViewDelayedTouchesBeganGestureRecognizer"]){
+        return NO;
+    }
+    return YES;
+}
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
+{
+    NSInteger keyIndex = [change[NSKeyValueChangeNewKey] integerValue];
+    if(keyIndex == 3){
+        _sPoint = CGPointZero;
+        self.panGestureRecognizer.enabled = YES;
+    }
 }
 
 -(void)setRows:(NSMutableArray *)rows
@@ -134,9 +192,25 @@
     [self reloadData];
 }
 
+-(NSMutableArray *)modelDatas
+{
+    if (_modelDatas == nil) {
+        _modelDatas = [NSMutableArray array];
+    }
+    return _modelDatas;
+}
+
+-(NSMutableArray *)selectData
+{
+    if(self.modelDatas.count>0)return self.modelDatas;
+    return nil;
+}
+
 -(void)dealloc
 {
     NSLog(@"%s", __FUNCTION__);
+    [_cusPan removeObserver:self forKeyPath:@"state"];
+    [self.panGestureRecognizer removeObserver:self forKeyPath:@"state"];
 }
 
 @end

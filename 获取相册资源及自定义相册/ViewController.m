@@ -85,7 +85,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellid];
     }
     
-    cell.textLabel.text = @"CustomPhotosController";
+    cell.textLabel.text = @"图片上传与自定义相册";
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
@@ -95,7 +95,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    Class className = NSClassFromString(@"CustomPhotosController");
+    Class className = NSClassFromString(@"SSViewController");
     UIViewController *vc = [className new];
     [self.navigationController pushViewController:vc animated:YES];
 }
